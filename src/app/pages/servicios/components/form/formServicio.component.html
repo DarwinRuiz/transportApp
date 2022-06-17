@@ -1,0 +1,103 @@
+<div class="Container">
+  <mat-toolbar>
+    <span>Crear Servicio</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px">
+    <form [formGroup]="form" (ngSubmit)="agregarServicio()">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Tipo del Servicio</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="servicio_tipo"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="6"> </mat-grid-tile>
+
+        
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Fecha de Entrega</mat-label>
+            <input
+              matInput
+              type="date"
+              autocomplete="off"
+              formControlName="servicio_fecha_entrega"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Precio</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="servicio_precio"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Planta que Proporciona el Producto</mat-label>
+            <mat-select formControlName="servicio_planta_id">
+              <mat-option
+                [value]="option.planta_id"
+                *ngFor="let option of plantas"
+                >{{ option.planta_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Producto del Servicio</mat-label>
+            <mat-select formControlName="servicio_producto_id">
+              <mat-option
+                [value]="option.producto_id"
+                *ngFor="let option of productos"
+                >{{ option.producto_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Cliente que Adquiere el Servicio</mat-label>
+            <mat-select formControlName="servicio_cliente_id">
+              <mat-option
+                [value]="option.cliente_id"
+                *ngFor="let option of clientes"
+                >{{ option.cliente_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button routerLink="/servicios">
+            <i class="bi bi-arrow-left"></i> Volver
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Aceptar <i class="bi bi-sd-card"></i>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

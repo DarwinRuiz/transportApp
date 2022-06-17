@@ -1,0 +1,109 @@
+<div class="Container">
+  <mat-toolbar>
+    <span>Crear Solicitud de Transporte</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px">
+    <form [formGroup]="form" (ngSubmit)="agregarSolicitud()">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Destino del Transporte</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="solicitudTransp_destino"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="7"> </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Peso de la Carga</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="solicitudTransp_peso"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Persona que Emite el Transporte</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="solicitudTransp_emisor"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Persona que Recibe el Transporte</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="solicitudTransp_receptor"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Cantidad de Producto en el Transporte</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="solicitudTransp_cantidad_productos"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Producto que Transporta</mat-label>
+            <mat-select formControlName="solicitudTransp_producto_id">
+              <mat-option
+                [value]="option.producto_id"
+                *ngFor="let option of productos"
+                >{{ option.producto_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Bodega que Emite</mat-label>
+            <mat-select formControlName="solicitudTransp_bodega_id">
+              <mat-option
+                [value]="option.bodega_id"
+                *ngFor="let option of bodegas"
+                >{{ option.bodega_direccion }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button routerLink="/solicitudes-transporte">
+            <i class="bi bi-arrow-left"></i> Volver
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Aceptar <i class="bi bi-sd-card"></i>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

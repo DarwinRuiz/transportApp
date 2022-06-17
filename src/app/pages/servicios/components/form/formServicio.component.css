@@ -1,0 +1,15 @@
+.ancho {
+  width: 80%;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.disponibilidad {
+  margin-right: 50px;
+}

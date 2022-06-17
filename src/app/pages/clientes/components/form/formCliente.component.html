@@ -1,0 +1,50 @@
+<div class="Container">
+    <mat-toolbar>
+        <span>Crear Cliente</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 10px;">
+        <form [formGroup]="form" (ngSubmit)="agregarCliente()">
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Nombre del Cliente</mat-label>
+                        <input matInput autocomplete="off" formControlName="cliente_nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="7">
+
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Pais del Cliente</mat-label>
+                        <input matInput autocomplete="off" formControlName="cliente_pais">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Representante Legal</mat-label>
+                        <input matInput autocomplete="off" formControlName="cliente_representante_legal">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Teléfono del Cliente</mat-label>
+                        <input matInput autocomplete="off" formControlName="cliente_telefono">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>NIT del Cliente</mat-label>
+                        <input matInput autocomplete="off" formControlName="cliente_nit">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button routerLink="/clientes"><i class="bi bi-arrow-left"></i> Volver</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Aceptar <i class="bi bi-sd-card"></i></button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>

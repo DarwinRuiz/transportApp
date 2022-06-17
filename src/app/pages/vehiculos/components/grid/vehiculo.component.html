@@ -1,0 +1,82 @@
+<div class="container">
+  <div>
+    <mat-toolbar>
+      <span >Vehiculos</span>
+      <div class="example-spacer"></div>
+      <button mat-fab color="primary" routerLink="/form-vehiculos" matTooltip="Nuevo Registro" >+</button>
+    </mat-toolbar>
+    
+  </div>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Buscar Registros</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ingresa el Registro"
+      autocomplete="off"
+      #input
+    />
+  </mat-form-field>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="vehiculo_placa">
+        <th mat-header-cell *matHeaderCellDef>Placa del Vehículo</th>
+        <td mat-cell *matCellDef="let element">{{ element.vehiculo_placa }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="vehiculo_modelo">
+        <th mat-header-cell *matHeaderCellDef>Modelo del Vehículo</th>
+        <td mat-cell *matCellDef="let element">{{ element.vehiculo_modelo }}</td>
+      </ng-container>
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="vehiculo_linea">
+        <th mat-header-cell *matHeaderCellDef>Linea del Vehículo</th>
+        <td mat-cell *matCellDef="let element">{{ element.vehiculo_linea }}</td>
+      </ng-container>
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="vehiculo_disponible">
+        <th mat-header-cell *matHeaderCellDef>Disponibilidad</th>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{
+          color: element.vehiculo_disponible
+            ? 'hsl(141, 53%, 53%)'
+            : 'hsl(348, 100%, 61%)'
+        }">{{ element.vehiculo_disponible | yesNo }}</td>
+      </ng-container>
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="vehiculo_tipovehi_nombre">
+        <th mat-header-cell *matHeaderCellDef>Tipo del Vehículo</th>
+        <td mat-cell *matCellDef="let element">{{ element.vehiculo_tipovehi_nombre }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="vehiculo_planta_nombre">
+        <th mat-header-cell *matHeaderCellDef>Planta</th>
+        <td mat-cell *matCellDef="let element">{{ element.vehiculo_planta_nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <a class="pointer" style="color: orange;" matTooltip="Editar Registro" [routerLink]="['/form-vehiculos', element.vehiculo_id]"><mat-icon>edit</mat-icon></a>
+          <a class="pointer" style="color: red;" matTooltip="Eliminar Registro" (click)="eliminarRegistro(element.vehiculo_id)"><mat-icon>delete</mat-icon></a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

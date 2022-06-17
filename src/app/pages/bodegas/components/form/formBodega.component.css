@@ -1,0 +1,7 @@
+.ancho{
+    width: 80%;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}

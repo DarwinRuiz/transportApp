@@ -1,0 +1,40 @@
+<div class="Container">
+    <mat-toolbar>
+        <span>Crear Planta</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 10px;">
+        <form [formGroup]="form" (ngSubmit)="agregarTipoVehiculo()">
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Nombre de la Planta</mat-label>
+                        <input matInput autocomplete="off" formControlName="planta_nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Procesamiento</mat-label>
+                        <input matInput autocomplete="off" formControlName="planta_procesamiento">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Departamento</mat-label>
+                        <mat-select formControlName="planta_departamento_id">
+                            <mat-option [value]="option.departamento_id" *ngFor="let option of departamentos">{{ option.departamento_nombre }}</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button routerLink="/plantas"><i class="bi bi-arrow-left"></i> Volver</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Aceptar <i class="bi bi-sd-card"></i></button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>

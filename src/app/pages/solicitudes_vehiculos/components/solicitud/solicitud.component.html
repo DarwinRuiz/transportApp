@@ -1,0 +1,30 @@
+<div class="container mt-2">
+  <div>
+    <mat-toolbar>
+      <span >Solicitudes de Transporte</span>
+      <div class="example-spacer"></div>
+      <button mat-fab color="primary" routerLink="/form-solicitudes-transporte" matTooltip="Nuevo Registro" >+</button>
+    </mat-toolbar>
+    
+  </div>  
+  
+  <div class="row justify-content-between">
+    <div class="card mt-2 col-4" style="width: 22rem; background-color: #d7ccc8;" *ngFor="let solicitud of solicitudes">
+      <div class="card-body">
+        <h5 class="card-title">Destino: {{ solicitud.solicitudTransp_destino }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Datos de la Solicitud</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" style="background-color: #d7ccc8;">Emisor: {{solicitud.solicitudTransp_emisor}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Receptor: {{solicitud.solicitudTransp_receptor}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Producto Transportado: {{solicitud.solicitudTransp_producto}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Cantidad de Productos: {{solicitud.solicitudTransp_cantidad_productos}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Peso del Transporte: {{solicitud.solicitudTransp_peso}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Bodega que Envía: {{solicitud.solicitudTransp_bodega}}</li>
+        </ul>
+        <a matTooltip="Editar Registro" [routerLink]="['/form-solicitudes-transporte', solicitud.solicitudTransp_id]" class="btn btn-warning mr-4">Editar <i class="bi bi-pencil"></i></a>
+        <a (click)="eliminarRegistro(solicitud.solicitudTransp_id)" matTooltip="Eliminar Registro" class="btn btn-danger">Eliminar <i class="bi bi-trash3"></i></a>
+      </div>
+  </div>
+  </div>
+    
+</div>

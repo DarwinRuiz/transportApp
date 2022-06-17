@@ -1,0 +1,38 @@
+<div class="Container">
+    <mat-toolbar>
+        <span>Crear Bodega</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 10px;">
+        <form [formGroup]="form" (ngSubmit)="agregarBodega()">
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Dirección de la Bodega</mat-label>
+                        <input matInput autocomplete="off" formControlName="bodega_direccion">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="4">
+
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Contacto de la Bodega</mat-label>
+                        <input matInput autocomplete="off" formControlName="bodega_contacto">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-form-field appearance="fill" class="ancho">
+                        <mat-label>Encargado de la Bodega</mat-label>
+                        <input matInput autocomplete="off" formControlName="bodega_encargado">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button routerLink="/bodegas"><i class="bi bi-arrow-left"></i> Volver</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Aceptar <i class="bi bi-sd-card"></i></button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>

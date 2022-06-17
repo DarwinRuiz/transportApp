@@ -1,0 +1,98 @@
+<div class="Container">
+  <mat-toolbar>
+    <span>Crear Producto</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px">
+    <form [formGroup]="form" (ngSubmit)="agregarVehiculo()">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Nombre del Producto</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="producto_nombre"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="6"> </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Descripción del Producto</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="producto_descripcion"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Cantidad del Producto</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="producto_cantidad"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Precio del Producto</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="producto_precio"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Categoria del Producto</mat-label>
+            <mat-select formControlName="producto_categoriaProd_id">
+              <mat-option
+                [value]="option.categoriaProd_id"
+                *ngFor="let option of categoriasProductos"
+                >{{ option.categoriaProd_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Planta</mat-label>
+            <mat-select formControlName="producto_planta_id">
+              <mat-option
+                [value]="option.planta_id"
+                *ngFor="let option of plantas"
+                >{{ option.planta_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button routerLink="/productos">
+            <i class="bi bi-arrow-left"></i> Volver
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Aceptar <i class="bi bi-sd-card"></i>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

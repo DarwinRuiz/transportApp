@@ -1,0 +1,99 @@
+<div class="Container">
+  <mat-toolbar>
+    <span>Crear Planta</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px">
+    <form [formGroup]="form" (ngSubmit)="agregarVehiculo()">
+      <mat-grid-list cols="4" rowHeight="70px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Placa del Vehiculo</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="vehiculo_placa"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="6"> </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Modelo del Vehiculo</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="vehiculo_modelo"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Linea del Vehiculo</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="vehiculo_linea"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-radio-group
+            formControlName="vehiculo_disponible"
+            appearance="fill"
+            class="ancho"
+          >
+            <mat-label class="disponibilidad">Disponibilidad</mat-label>
+            <mat-radio-button [value]="true">Si</mat-radio-button>
+            <mat-radio-button [value]="false">No</mat-radio-button>
+          </mat-radio-group>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Tipo de Vehiculo</mat-label>
+            <mat-select formControlName="vehiculo_tiposvehi_id">
+              <mat-option
+                [value]="option.tiposVehi_id"
+                *ngFor="let option of tiposVehiculos"
+                >{{ option.tiposVehi_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Planta</mat-label>
+            <mat-select formControlName="vehiculo_planta_id">
+              <mat-option
+                [value]="option.planta_id"
+                *ngFor="let option of plantas"
+                >{{ option.planta_nombre }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button routerLink="/vehiculos">
+            <i class="bi bi-arrow-left"></i> Volver
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Aceptar <i class="bi bi-sd-card"></i>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

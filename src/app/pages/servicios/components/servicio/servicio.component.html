@@ -1,0 +1,29 @@
+<div class="container mt-2">
+  <div>
+    <mat-toolbar>
+      <span >Servicios</span>
+      <div class="example-spacer"></div>
+      <button mat-fab color="primary" routerLink="/form-servicios" matTooltip="Nuevo Registro" >+</button>
+    </mat-toolbar>
+    
+  </div>  
+  
+  <div class="row justify-content-between">
+    <div class="card mt-2 col-4" style="width: 22rem; background-color: #d7ccc8;" *ngFor="let servicio of servicios">
+      <div class="card-body">
+        <h5 class="card-title">Destino: {{ servicio.servicio_tipo }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Datos de la Solicitud</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" style="background-color: #d7ccc8;">Fecha de Entrega: {{servicio.servicio_fecha_entrega | date: 'fullDate'}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Precio del Servicio: {{servicio.servicio_precio}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Planta que Proveedora: {{servicio.servicio_planta}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Productos: {{servicio.servicio_producto}}</li>
+          <li class="list-group-item" style="background-color: #d7ccc8;">Cliente Acreedor: {{servicio.servicio_cliente}}</li>
+        </ul>
+        <a matTooltip="Editar Registro" [routerLink]="['/form-servicios', servicio.servicio_id]" class="btn btn-warning mr-4">Editar <i class="bi bi-pencil"></i></a>
+        <a (click)="eliminarRegistro(servicio.servicio_id)" matTooltip="Eliminar Registro" class="btn btn-danger">Eliminar <i class="bi bi-trash3"></i></a>
+      </div>
+  </div>
+  </div>
+    
+</div>

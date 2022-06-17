@@ -1,0 +1,55 @@
+<div class="container">
+  <div>
+    <mat-toolbar>
+      <span >Categorias Productos</span>
+      <div class="example-spacer"></div>
+      <button mat-fab color="primary" routerLink="/form-categorias-productos" matTooltip="Nuevo Registro" >+</button>
+    </mat-toolbar>
+    
+  </div>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Buscar Registros</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ingresa el Registro"
+      autocomplete="off"
+      #input
+    />
+  </mat-form-field>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="categoriaProd_nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre de la Categoria de Producto</th>
+        <td mat-cell *matCellDef="let element">{{ element.categoriaProd_nombre }}</td>
+      </ng-container>
+
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="categoriaProd_bodega_nombre">
+        <th mat-header-cell *matHeaderCellDef>Bodega de la Categoria Producto</th>
+        <td mat-cell *matCellDef="let element">{{ element.categoriaProd_bodega_nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <a class="pointer" style="color: orange;" matTooltip="Editar Registro" [routerLink]="['/form-categorias-productos', element.categoriaProd_id]"><mat-icon>edit</mat-icon></a>
+          <a class="pointer" style="color: red;" matTooltip="Eliminar Registro" (click)="eliminarRegistro(element.categoriaProd_id)"><mat-icon>delete</mat-icon></a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
